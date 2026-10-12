@@ -1,10 +1,10 @@
-﻿namespace ArrayHelperApp;
+namespace ArrayHelperApp;
 
 public static class ArrayHelper
 {
     public static void PrintArray<T>(T[] array, string title)
     {
-        Console.WriteLine(${title}:);
+        Console.WriteLine($"{title}:");
         Console.WriteLine(string.Join(" ", array));
     }
 
@@ -12,7 +12,7 @@ public static class ArrayHelper
     {
         for (int i = 0; i < array.Length; i++)
         {
-            if (array[i].Equals(value)) return i;
+            if (array[i] != null && array[i]!.Equals(value)) return i;
         }
         return -1;
     }
@@ -57,6 +57,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
         int[] numbers = { 5, 12, 1, 9, 20 };
         ArrayHelper.PrintArray(numbers, "Числа");
         Console.WriteLine($"Індекс 9: {ArrayHelper.IndexOf(numbers, 9)}");
